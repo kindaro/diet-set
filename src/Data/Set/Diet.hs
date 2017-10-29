@@ -28,6 +28,7 @@ module Data.Set.Diet
     (
     -- * Intervals
       Interval (..)
+    , mapI
     , overlapping
     , adjacent
     , apart
@@ -106,6 +107,10 @@ instance NFData a => NFData (Interval a) where
 
 instance NFData a => NFData (Diet a) where
     rnf (Diet s) = rnf s
+
+-- | Map over intervals in a Diet.
+mapI :: Ord a => (Interval a -> Interval a) -> Diet a -> Diet a
+mapI f = Diet . S.map f . unDiet
 
 -- | Checks if a value is within a range.
 inRange :: Ord a => a -> (a, a) -> Bool
