@@ -1,0 +1,37 @@
+name: diet-set
+version: '0.1.0'
+synopsis: Discrete Interval Encoding Tree
+description: ! 'An implementation of Discrete Interval Encoding Trees, described by
+  Martin
+
+  Erwig in /Diets for Fat Sets/. The idea is to use intervals to represent
+
+  consecutive elements, potentially using far fewer intervals than the actual
+
+  number of elements in the set.'
+category: Data Structures
+author: Sivert Berg
+maintainer: Sivert Berg <code@trev.is>
+copyright: Copyright (C) 2015 Sivert Berg
+license: GPL
+dependencies:
+- base >=4.7
+- containers
+- deepseq
+library:
+  source-dirs: src/
+  ghc-options: -Wall
+  exposed-modules:
+  - Data.Set.Diet
+tests:
+  test:
+    main: test.hs
+    source-dirs:
+    - tests
+    - src
+    ghc-options:
+    - -Wall
+    - -fhpc
+    dependencies:
+    - template-haskell
+    - QuickCheck
