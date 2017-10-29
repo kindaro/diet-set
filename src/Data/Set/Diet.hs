@@ -88,6 +88,9 @@ import Text.Read
 -- | A closed interval.
 data Interval a = Interval !a !a deriving (Show, Read, Eq, Ord)
 
+instance Functor Interval where
+    fmap f (Interval x y) = Interval (f x) (f y)
+
 -- | A Discrete Interval Encoding Tree.
 newtype Diet a = Diet { unDiet :: S.Set (Interval a) } deriving (Eq)
 
